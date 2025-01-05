@@ -11,13 +11,32 @@
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-W5GXWH4V');</script>
-    <!-- End Google Tag Manager -->
+
 </head>
 <body>
-    <h1>impact测试1</h1>
+    <h1 id="result"></h1>
 </body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5GXWH4V"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager -->
+    <script>
+        // 获取当前页面的URL
+        const url = window.location.href;
+
+        // 解析URL中的查询字符串部分（即问号后面的内容）
+        const queryString = url.split('?')[1];
+
+        // 如果有查询字符串部分则进行解析，没有则直接返回
+        if (queryString) {
+            const params = new URLSearchParams(queryString);
+            // 遍历参数
+            params.forEach((value, key) => {
+                console.log(`${key}: ${value}`); // 在控制台输出每个参数的键值对
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML += `${key}: ${value}<br>`; // 在页面的result div元素中展示每个参数的键值对，每个键值对换行显示
+            });
+        }
+    </script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5GXWH4V"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 </html>
