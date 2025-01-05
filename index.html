@@ -1,42 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-W5GXWH4V');</script>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W5GXWH4V');
+    </script>
 
 </head>
+
 <body>
     <h1 id="result"></h1>
 </body>
-    <!-- End Google Tag Manager -->
-    <script>
-        // 获取当前页面的URL
-        const url = window.location.href;
+<!-- End Google Tag Manager -->
+<script>
+    // 获取当前页面的URL
+    let key1 = '',
+        key2 = ''
+    const url = window.location.href;
 
-        // 解析URL中的查询字符串部分（即问号后面的内容）
-        const queryString = url.split('?')[1];
+    // 解析URL中的查询字符串部分（即问号后面的内容）
+    const queryString = url.split('?')[1];
 
-        // 如果有查询字符串部分则进行解析，没有则直接返回
-        if (queryString) {
-            const params = new URLSearchParams(queryString);
-            // 遍历参数
-            params.forEach((value, key) => {
-                console.log(`${key}: ${value}`); // 在控制台输出每个参数的键值对
-                const resultDiv = document.getElementById('result');
-                resultDiv.innerHTML += `${key}: ${value}<br>`; // 在页面的result div元素中展示每个参数的键值对，每个键值对换行显示
-            });
-        }
-    </script>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5GXWH4V"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    // 如果有查询字符串部分则进行解析，没有则直接返回
+    if (queryString) {
+        const params = new URLSearchParams(queryString);
+        console.log(params, 'paramsparamsparams');
+        key1 = params.get('key1')
+        key2 = params.get('key2')
+        // 遍历参数
+        params.forEach((value, key) => {
+            console.log(`${key}: ${value}`); // 在控制台输出每个参数的键值对
+            // if(key==='key1')key1=value
+            // if(key==='key2')key2=value
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML += `${key}: ${value}<br>`; // 在页面的result div元素中展示每个参数的键值对，每个键值对换行显示
+        });
+    }
+
+    (function (a, b, c, d, e, f, g) {
+        e['ire_o'] = c;
+        e[c] = e[c] || function () {
+            (e[c].a = e[c].a || []).push(arguments)
+        };
+        f = d.createElement(b);
+        g = d.getElementsByTagName(b)[0];
+        f.async = 1;
+        f.src = a;
+        g.parentNode.insertBefore(f, g);
+    })('https://utt.impactcdn.com/A2788006-de3d-4011-a57c-c4737e79de0365535.js', 'script', 'ire', document, window);
+    ire('identify', {
+        customerid: key1 /*INSERT key1*/ ,
+        customeremail: key2 /*INSERT key2*/
+    });
+</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5GXWH4V" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- <script type="text/javascript">
+
+</script> -->
+
 </html>
